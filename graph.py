@@ -18,3 +18,12 @@ class Graph():
 
     def addNodeToList(self, nodeToAdd: Node) -> None:
         self.__nodeList[nodeToAdd] = nodeToAdd.getConnections()
+
+    def removeNodeFromList(self, originNode: Node, nodeToRemove: Node) -> Node:
+        listOfConnections = self.__nodeList[originNode]
+
+        for i in range(len(listOfConnections) - 1):
+            if(listOfConnections[i] != nodeToRemove):
+                continue
+
+        return nodeToRemove
