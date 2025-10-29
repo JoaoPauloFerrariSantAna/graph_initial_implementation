@@ -36,7 +36,7 @@ class Graph():
         """
         self.__nodeList[nodeToAdd] = nodeToAdd.getConnections()
 
-    def removeNodeFromList(self, originNode: Node, nodeToRemove: Node) -> Node:
+    def removeNodeFromList(self, originNode: Node, nodeToRemove: Node) -> None:
         """Will remove a node from the global list.
 
         Keyword arguments:
@@ -48,11 +48,6 @@ class Graph():
         listOfConnections = self.__nodeList[originNode]
 
         if(nodeToRemove not in listOfConnections):
-            return None
+            raise Exception
 
-        for i in range(len(listOfConnections) - 1):
-            if(listOfConnections[i] == nodeToRemove):
-                listOfConnections.pop(i)
-                break
-
-        return nodeToRemove
+        listOfConnections.remove(nodeToRemove)
