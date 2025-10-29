@@ -43,11 +43,16 @@ class Graph():
 
         :param originalNode: the node where that connection originates.
         :param nodeToRemove: the node to remove from originalNode.
+        :return: the node that was deleted or None if the node was already removed.
         """
         listOfConnections = self.__nodeList[originNode]
 
+        if(nodeToRemove not in listOfConnections):
+            return None
+
         for i in range(len(listOfConnections) - 1):
-            if(listOfConnections[i] != nodeToRemove):
-                continue
+            if(listOfConnections[i] == nodeToRemove):
+                listOfConnections.pop(i)
+                break
 
         return nodeToRemove
